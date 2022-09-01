@@ -2,6 +2,9 @@
   font-size: 28pt;
   width: 25%;
   text-align: center;
+  background-color: inherit;
+  border-color: inherit;
+  border-width: 0pt;
 }
 .App-b{
   font-size: 28pt;

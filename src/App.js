@@ -1,18 +1,24 @@
+import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function App() {
-  const [show, setShow]=useState(true);
-  const [Agregar, setAgregar]=useState(false);
+  const [show, setShow]=useState(false);
+  const handleClose=() => setShow(false);
+  const handleShow=() => setShow(true);
+
   return (
     <body className='App-body'>
       <div className="App-header">
         <div className="App-b">Bienvenid@</div>
-        <div className="App" onClick={() => setAgregar(!show)}>Agregar producto</div>
         <div className="App">Editar producto</div>
         <div className="App">Eliminar producto</div>
       </div>
-      <button className="App-button" onClick={() => setShow(!show)}>{show? 'Mostrar Productos':'Ocultar Productos'}</button>
+      <div>Agrega un producto
+        <input placeholder='Lee el código'></input>
+      </div>
       <div className="App-row-e">
         <div className="App-column">
           <div className="App-txt">Producto</div>
