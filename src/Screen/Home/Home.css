@@ -1,0 +1,189 @@
+.App {
+    font-size: 28pt;
+    width: 25%;
+    font-family: 'Montserrat';
+    text-align: center;
+    color: white;
+    background-color: inherit;
+    border-color: inherit;
+    border-width: 0pt;
+    height: 100%;
+    padding-bottom: 15px;
+  }
+  .App-b{
+    font-size: 28pt;
+    color: white;
+    width: 25%;
+    display: block;
+    align-self: center;
+    text-align: start;
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+  body, ul {
+    margin: 0;
+    padding: 0;
+  }
+  .App-body{
+    background-color: white;
+    width:auto;
+    height: auto;
+    display: block;
+    padding-bottom: 20pt;
+  }
+  
+  .App-header {
+    display: flex;
+    flex-direction:row;
+    height: auto;
+    flex:auto;
+    height: 75pt;
+    background-color: #952F60;
+  }
+  .App-row-e{
+    display: flex;
+    flex-direction: row;
+    row-gap: 50px;
+    align-content: space-between;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .App-row-e-hiden{
+    opacity: 0;
+  }
+  .App-row-e::-webkit-scrollbar-track{
+    border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #404040;
+  }
+  .App-row-e::-webkit-scrollbar {
+    width: 10px;
+  }
+  .App-row-e::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid #000;
+  }
+  .App-row-pe{
+    display: flex;
+    flex-direction: row;
+    row-gap: 50px;
+    align-content: space-between;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .App-row-pe::-webkit-scrollbar-track{
+    border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #404040;
+  }
+  .App-row-pe::-webkit-scrollbar {
+    width: 10px;
+  }
+  .App-row-pe::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid #000;
+  }
+  .App-row-se{
+    display: flex;
+    flex-direction: row;
+    row-gap: 50px;
+    align-content: space-between;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .App-row-se::-webkit-scrollbar-track{
+    border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #404040;
+  }
+  .App-row-se::-webkit-scrollbar {
+    width: 10px;
+  }
+  .App-row-se::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid #000;
+  }
+  .App-column{
+    display: grid;
+    flex-direction: column;
+    width: 33.3%;
+    height: 10%;
+    margin-left: .1%;
+  }
+  .App-button{
+    border-radius: 45px;
+    background-color: whitesmoke;
+    text-align: center;
+    font-size: 18pt;
+    margin: auto;
+    margin-left: 1%;
+    margin-top: 1%;
+    width: 20%;
+    height: auto;
+  }
+  .App-txt{
+    font-size: 24pt;
+    margin-top: 5pt;
+  }
+  .Tittle-txt{
+    font-size: 24pt;
+    margin-top: 5pt;
+    width: 33.3%;
+    height: 10%;
+    margin-left: .1%;
+  }
+  
+  .Tittle{
+    display:flex;
+    flex-direction: row;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .operaciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .input-operaciones{
+    margin-top: 10pt;
+    justify-content: space-around;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    color: #952F60;
+    font-size: 18pt;
+    font-family: 'Montserrat';
+  }
+  .botonsubmit{
+    display: block;
+    flex-direction: column;
+    background-color: transparent;
+    color: transparent;
+    border-color: transparent;
+  }
+  ::placeholder{
+    text-align: center;
+    color:#952F60 ;
+    font-family: 'Montserrat';
+    opacity: .6;
+}
