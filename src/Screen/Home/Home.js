@@ -5,8 +5,10 @@ import { dataJson } from "../../App";
 
 function Home(props) {
     const [cbA, setcbA]=useState('');
+    //se crea la constante donde se establece un valor inicial y el valor que se tomará al momento de ingresar el valor por el usuario
     const [cbQ, setcbQ]=useState('');
     const [cbE, setcbE]=useState('');
+    //Se transforma el texto ingresado a un objeto
     let camposA={
         cb: cbA,
     };
@@ -16,6 +18,7 @@ function Home(props) {
     let camposE={
         cb: cbE,
     };
+    //se establecen los parametros para realizar una llamda a la API
     const requestOptionsA={
         method: "POST",
         headers: {
@@ -23,6 +26,7 @@ function Home(props) {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
+        //este metodo transforma el objeto de JavaScript a el formato de datos JSON
         body: JSON.stringify(camposA),
     };
     const requestOptionsQ={
@@ -44,11 +48,13 @@ function Home(props) {
         body: JSON.stringify(camposE),
     };
 
+    //Función donde se hace la llamada a la API
     const handleSubmitA=async (event) => {
         event.preventDefault();
         fetch("http://127.0.0.1:8000/api/agregar", requestOptionsA)
             .then((response) => response.json())
             .then((response) => console.log(response))
+        //limpia el campo de texto
         setcbA('');
     };
     const handleSubmitQ=async (event) => {
@@ -66,12 +72,16 @@ function Home(props) {
         setcbE('');
     };
 
+    //className es para mandar a llamar el estilo del input
+    //onsubmit realiza la función al momento de hacer enter
+    //onchange cambia el valor inicial que es nulo al valor que escribe el usuario
+    //value establece a que valor correspone el campo que se esta escribiendo
     return (
         <body className="App-body">
             <div className="App-header">
                 <div className="App-b">Bienvenid@</div>
                 <button className="App">
-                    <Link to={"/Agregar"}>Agregar producto</Link>
+                    <Link to={"/Agregar"}>Crear producto</Link>
                 </button>
                 <button className="App">
                     <Link to={"/Editar"}>Editar producto</Link>

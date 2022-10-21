@@ -38,6 +38,7 @@ function AgregarP(props) {
         setcantidad('');
         setprecio('');
     };
+    //placeholder es el texto que se muestra en el campo antes de empezar a escribir
     return (
         <body className="bodyAgr">
             <div className='header'>
