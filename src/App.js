@@ -50,15 +50,13 @@ function App(props) {
       </div>
       <div className="login-form">
         <form>
-          <label>
-            <input
-              type="text"
-              {...correo}
-              autoComplete="new-password"
-              className="input-login"
-              placeholder="Ingresa tu correo"
-            />
-          </label>
+          <input
+            type="text"
+            {...correo}
+            autoComplete="new-password"
+            className="input-login"
+            placeholder="Ingresa tu correo"
+          />
           <input
             type="password"
             {...password}
@@ -67,12 +65,72 @@ function App(props) {
             placeholder="Ingresa tu contraseña"
           />
         </form>
-        <button type="button" className="input-login" onClick={handleLogin}>
-          Iniciar sesión
+        <button type="button" className="btn btn-success" style={{ width: '150px', marginLeft: '83vmin', marginTop: '40px' }} onClick={handleLogin}>
+          Ingresar
         </button>
         <br />
         <div>
-          <button className="boton-lista">Mostrar productos</button>
+          <button className="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar producto</button>
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Mostrando todos los productos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h1>Productos</h1>
+                <div className="Tittle">
+                  <div className="Tittle-txt">Producto</div>
+                  <div className="Tittle-txt">Precio</div>
+                  <div className="Tittle-txt">Cantidad</div>
+                </div>
+                <div className="App-row-modal">
+                  <div className="App-column">
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                    <div className="App-txt">Jamón</div>
+                  </div>
+                  <div className="App-column">
+                    <div className="App-txt">$50</div>
+                  </div>
+                  <div className="App-column">
+                    <div className="App-txt">20</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </body>
