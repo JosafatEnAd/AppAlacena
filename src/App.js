@@ -3,7 +3,8 @@ import "./App.css";
 import IPN from "./img/IPN-Logo.png";
 import Carrito from "./img/Carrito.png";
 import { useNavigate } from "react-router-dom";
-import { getToken, setUserSession } from "./Utils/Common";
+import axios from "axios";
+import { sortBy } from "lodash";
 
 
 function App(props) {
@@ -35,6 +36,33 @@ function App(props) {
     navigate("/Home")
     return dataJson;
   };
+
+  const refreshTime=10000
+
+  const [listaAP, setLista]=React.useState(null);
+  const [listaPP, setListaPP]=React.useState(null);
+  const [listaSP, setListaSP]=React.useState(null);
+
+  const ListaP=async () => {
+    axios.get('http://127.0.0.1:8000/api/mostrar').then((response) => {
+      setLista(response.data);
+    });
+    axios.get('http://127.0.0.1:8000/api/pocaE').then((response) => {
+      setListaPP(response.data);
+    });
+    axios.get('http://127.0.0.1:8000/api/sinE').then((response) => {
+      setListaSP(response.data);
+    });
+  }
+
+  React.useEffect(() => {
+    const comInterval=setInterval(ListaP, refreshTime)
+    return () => clearInterval(comInterval)
+  }, []);
+
+  if (!listaAP) return null;
+  if (!listaPP) return null;
+  if (!listaSP) return null;
 
 
 
@@ -70,7 +98,7 @@ function App(props) {
         </button>
         <br />
         <div>
-          <button className="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar producto</button>
+          <button className="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mostrar productos</button>
         </div>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -80,54 +108,24 @@ function App(props) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <h1>Productos</h1>
                 <div className="Tittle">
                   <div className="Tittle-txt">Producto</div>
                   <div className="Tittle-txt">Precio</div>
                   <div className="Tittle-txt">Cantidad</div>
                 </div>
-                <div className="App-row-modal">
-                  <div className="App-column">
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
-                    <div className="App-txt">Jamón</div>
+                {sortBy(listaAP, ['precio'], ['asc']).map((producto) => (
+                  <div className="App-row-e">
+                    <div className="App-column">
+                      <div className="App-txt">{producto.nombre}</div>
+                    </div>
+                    <div className="App-column">
+                      <div className="App-txt">${producto.precio}</div>
+                    </div>
+                    <div className="App-column">
+                      <div className="App-txt">{producto.cantidad}</div>
+                    </div>
                   </div>
-                  <div className="App-column">
-                    <div className="App-txt">$50</div>
-                  </div>
-                  <div className="App-column">
-                    <div className="App-txt">20</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

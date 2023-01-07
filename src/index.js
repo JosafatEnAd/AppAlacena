@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./index.css";
+import { initializeApp } from "firebase/app";
 import { render } from "react-dom";
 import {
   BrowserRouter,
