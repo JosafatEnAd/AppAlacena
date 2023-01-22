@@ -5,6 +5,7 @@ import Carrito from "./img/Carrito.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { sortBy } from "lodash";
+import Home from "./Screen/Home/Home";
 
 
 function App(props) {
@@ -17,24 +18,48 @@ function App(props) {
     contraseña: password.value,
   };
   const requestOptions={
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(campos),
+    Accept: "application/json",
+    "Content-Type": "application/json",
   };
 
-  let dataJson={};
+  let dataJson;
   const handleLogin=async () => {
-    fetch("http://127.0.0.1:8000/api/iniciarsesion", requestOptions)
-      .then((response) => response.json())
-      .then(json => {
-        dataJson=json
+    await axios.post('http://127.0.0.1:8000/api/iniciarsesion', campos, requestOptions)
+      .then((response) => {
+        dataJson=response.data
+        return dataJson;
       })
-      .then(() => console.log(dataJson))
-    navigate("/Home")
-    return dataJson;
+    if (dataJson==undefined) {
+      console.log('vuelve a intentarlo')
+      const alertPlaceholder=document.getElementById('liveAlertPlaceholder')
+
+      const alert=(message, type) => {
+        const wrapper=document.createElement('div')
+        wrapper.innerHTML=[
+          `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+          `   <div>${message}</div>`,
+          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+          '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+      }
+
+      const alertTrigger=document.getElementById('liveAlertBtn')
+      if (alertTrigger) {
+        alertTrigger.addEventListener('click', () => {
+          alert('Nice, you triggered this alert message!', 'success')
+        })
+      }
+    } else {
+      console.log('Bienvenido')
+      navigate("/Home")
+      //axios.post('http://127.0.0.1:8000/api/iniciarsesion', campos, requestOptions).then(console.log(campos))
+      //  .then((response) => {
+      //    dataJson=response.data;
+      //  }).then(console.log(dataJson))
+    }
+    //console.log(dataJson);
   };
 
   const refreshTime=10000
@@ -43,7 +68,7 @@ function App(props) {
   const [listaPP, setListaPP]=React.useState(null);
   const [listaSP, setListaSP]=React.useState(null);
 
-  const ListaP=async () => {
+  const ListaP=() => {
     axios.get('http://127.0.0.1:8000/api/mostrar').then((response) => {
       setLista(response.data);
     });
@@ -64,11 +89,10 @@ function App(props) {
   if (!listaPP) return null;
   if (!listaSP) return null;
 
-
-
   return (
     <body className="body">
       <div className="header">
+
         <img src={IPN} className="logo" />
         <div className="text-header">Instituto Politécnico Nacional</div>
       </div>
@@ -96,6 +120,7 @@ function App(props) {
         <button type="button" className="btn btn-success" style={{ width: '150px', marginLeft: '83vmin', marginTop: '40px' }} onClick={handleLogin}>
           Ingresar
         </button>
+        <div id="liveAlertPlaceholder"></div>
         <br />
         <div>
           <button className="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Mostrar productos</button>

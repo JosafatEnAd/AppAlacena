@@ -37,7 +37,9 @@ function Home(props) {
         <body className="App-body">
             <Header />
             <Operaciones />
-
+            <div>
+                <p>Hola{props.data}</p>
+            </div>
             <h1>Productos</h1>
             <div className="Tittle">
                 <div className="Tittle-txt">Producto</div>
